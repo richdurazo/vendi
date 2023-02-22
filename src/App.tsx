@@ -1,11 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import './App.scss';
+import Login from './pages/Login';
+import { MaterialThemeProvider } from './themes/MaterialThemeProvider';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Landing } from './pages/Landing';
+import SignUp from './pages/SignUp';
+import { CreateProduct } from './pages/CreateProduct';
+
+const router = createBrowserRouter([
+  { path: '/', element: <Landing />},
+  { path: '/login', element: <Login />},
+  { path: '/sign-up', element: <SignUp />},
+  { path: '/create-product', element: <CreateProduct />},
+
+])
 
 function App() {
   return (
+    <MaterialThemeProvider themeMode={'light'}>
+
     <div className="App">
-      <header className="App-header">
+      {/* <SignInSide /> */}
+      <RouterProvider router={router} />
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -18,8 +36,9 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
+    </MaterialThemeProvider>
   );
 }
 
